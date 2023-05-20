@@ -1,0 +1,19 @@
+NAME = loser
+CC = c++
+FLAGS = -Wall -Werror -Wextra -g
+SRCS = main.cpp
+
+all:$(NAME)
+
+$(NAME): $(SRCS)
+	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+crazy:
+	@rm -f $(NAME)
+
+fcrazy : crazy
+
+valgrind:
+	valgrind "./loser" --leak-check=full
+
+re : fcrazy all
